@@ -1,0 +1,201 @@
+/* Section Background */
+.resume {
+  background-color: #ffffff; 
+  color: #45505b; 
+  padding: 60px 0;
+}
+
+/* Titles */
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #45505b;
+}
+
+.section-title h2::before,
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: #ddd; 
+  bottom: 1px;
+  left: calc(50% - 25px);
+}
+
+.section-title h2::after {
+  bottom: -7px;
+}
+
+.section-subtitle {
+  color: #728394;
+  max-width: 800px;
+  margin: 0 auto;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* Left Sidebar Styling */
+.profile-img-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-img-container img {
+  max-width: 200px;
+  border: 5px solid #fff;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); 
+}
+
+.sidebar-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #050d18; 
+}
+
+.resume-sidebar p {
+  color: #272829;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Contact Info */
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info ul li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+  color: #272829;
+  font-size: 14px;
+}
+
+.contact-info ul li i {
+  font-size: 18px;
+  color: #0563bb; 
+  margin-right: 15px;
+  line-height: 1;
+}
+
+.contact-info ul li a {
+  color: #272829;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.contact-info ul li a:hover {
+  color: #0563bb;
+  text-decoration: underline;
+}
+
+/* Skills Progress Bars */
+.progress-wrapper {
+  margin-bottom: 15px;
+}
+
+.skill {
+  padding: 0;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  display: block;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #050d18;
+  font-size: 14px;
+}
+
+.skill .val {
+  float: right;
+  font-style: normal;
+}
+
+.progress-bar-wrap {
+  background: #dce8f8; 
+  height: 8px;
+  border-radius: 4px;
+}
+
+.progress-bar {
+  background-color: #0563bb; 
+  height: 8px;
+  border-radius: 4px;
+}
+
+/* Right Content - Timeline Styling */
+.resume-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #45505b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resume-item {
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+  border-left: 2px solid #0563bb; 
+  position: relative;
+}
+
+.resume-item h4 {
+  line-height: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #050d18;
+  margin-bottom: 10px;
+}
+
+.resume-item h5 {
+  font-size: 16px;
+  background: #f7f8f9; 
+  padding: 5px 15px;
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  color: #0563bb;
+}
+
+.resume-item ul {
+  padding-left: 20px;
+}
+
+.resume-item ul li {
+  padding-bottom: 10px;
+  color: #45505b;
+}
+
+.resume-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Timeline Dots */
+.resume-item::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50px;
+  left: -9px;
+  top: 0;
+  background: #fff;
+  border: 2px solid #0563bb; 
+}

@@ -1,0 +1,110 @@
+
+.custom-navbar {
+  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%); 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 15px 0;
+  transition: all 0.3s ease-in-out;
+}
+.navbar-logo {
+  height: 60px;
+  width: auto;
+  margin-right: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: #ffffff !important;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important; 
+  font-weight: 500;
+  margin: 0 5px;
+  padding: 8px 15px !important;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+
+.nav-link:hover, .nav-link.active {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.2); 
+  transform: translateY(-2px); 
+}
+
+
+.search-input {
+  border-radius: 50px;
+  padding: 8px 20px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input:focus {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+
+.btn-search {
+  border-radius: 50px;
+  padding: 8px 25px;
+  background-color: #ffc107; 
+  color: #182848;
+  font-weight: 600;
+  border: none;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-search:hover {
+  background-color: #ffdb4d;
+  transform: scale(1.05); 
+}
+
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+
+@media (max-width: 991px) {
+  .navbar-nav {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.1); 
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 15px;
+  }
+  
+  .d-flex {
+    justify-content: center;
+    margin-top: 15px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .btn-search {
+    margin-left: 0;
+    width: 100%;
+  }
+}

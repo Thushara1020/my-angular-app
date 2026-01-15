@@ -1,0 +1,68 @@
+.custom-footer {
+  background-color: #1a1a1a; /* Navbar ekata match wena dark color ekak */
+  color: #ffffff;
+  margin-top: 50px;
+}
+
+.footer-heading {
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #007bff; /* Primary color eka */
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #cccccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: #007bff;
+  padding-left: 5px;
+}
+
+.social-links a {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-right: 15px;
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  color: #007bff;
+}
+
+.footer-input {
+  background: #2b2b2b;
+  border: 1px solid #444;
+  color: white;
+}
+
+.footer-input:focus {
+  background: #333;
+  color: white;
+  border-color: #007bff;
+  box-shadow: none;
+}
+
+.footer-bottom {
+  background-color: #111111;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* Navbar eke tiyena btn-search class ekama use kala */
+.btn-search {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}

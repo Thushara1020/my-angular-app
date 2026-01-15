@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<br><br><br><br><br>
+<section id="services" class="services section">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Services</h2>
+      <p class="section-subtitle">Delivering high-quality technical solutions tailored to meet business needs, from full-stack development to strategic consultation.</p>
+    </div>
+
+    <div class="row">
+      <div *ngFor="let service of services" class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+        <div class="icon-box">
+          <div class="icon"><i class="bi" [ngClass]="service.icon"></i></div>
+          <h4><a href="">{{ service.title }}</a></h4>
+          <p>{{ service.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="articles-section mt-5">
+      <div class="section-title">
+        <h2>Latest Articles</h2>
+        <p class="section-subtitle">Sharing knowledge and insights on technology, coding, and industry trends via Medium.</p>
+      </div>
+
+      <div class="row">
+        <div *ngFor="let article of articles" class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="article-card">
+            <div class="article-img">
+              <img [src]="article.image" alt="" class="img-fluid">
+            </div>
+            <div class="article-content">
+              <span class="date">{{ article.date }}</span>
+              <h3><a [href]="article.link" target="_blank">{{ article.title }}</a></h3>
+              <p>{{ article.summary }}</p>
+              <a [href]="article.link" target="_blank" class="read-more">Read on Medium <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<app-footer></app-footer>

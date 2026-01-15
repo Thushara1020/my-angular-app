@@ -1,0 +1,178 @@
+
+.contact {
+  background-color: #ffffff;
+  padding: 60px 0;
+  color: #444444;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #45505b; 
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+.section-title h2::before,
+.section-title h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: #ddd;
+}
+
+.section-subtitle {
+  margin-top: 15px;
+  color: #728394;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: italic;
+}
+
+/* --- Left Card (Contact Info) --- */
+.info-card {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  height: 100%;
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6); 
+  color: #444444;
+}
+
+.info-card h3 {
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #050d18;
+}
+
+.info-desc {
+  font-size: 14px;
+  color: #728394;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.icon-circle {
+  min-width: 50px;
+  height: 50px;
+  background-color: #eef7ff; 
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-circle i {
+  font-size: 20px;
+  color: #0563bb; 
+}
+
+.info-item:hover .icon-circle {
+  background-color: #0563bb;
+}
+
+.info-item:hover .icon-circle i {
+  color: #fff;
+}
+
+.info-content h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #050d18;
+}
+
+.info-content p {
+  font-size: 14px;
+  color: #728394;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- Right Card (Form) --- */
+.form-card {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  height: 100%;
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6); 
+  color: #444;
+}
+
+.form-card h3 {
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #050d18;
+}
+
+.form-desc {
+  font-size: 14px;
+  color: #728394;
+  margin-bottom: 30px;
+}
+
+/* Input Fields Styling */
+.form-control {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6; 
+  color: #212529;
+  border-radius: 4px;
+  padding: 12px 15px;
+  font-size: 14px;
+}
+
+.form-control::placeholder {
+  color: #aeb4bc;
+}
+
+.form-control:focus {
+  background-color: #fff;
+  color: #212529;
+  box-shadow: none;
+  border-color: #0563bb; 
+}
+
+textarea.form-control {
+  resize: none;
+}
+
+/* Button Styling */
+button[type="submit"] {
+  background: #0563bb; 
+  border: 0;
+  padding: 12px 35px;
+  color: #ffffff; 
+  transition: 0.4s;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background: #0678e3; 
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(5, 99, 187, 0.3);
+}
