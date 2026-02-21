@@ -1,68 +1,104 @@
+/* Main Footer Styling */
 .custom-footer {
-  background-color: #1a1a1a; /* Navbar ekata match wena dark color ekak */
+  background: #0a0a0a; /* Navbar ekata match wana dark theme eka */
   color: #ffffff;
-  margin-top: 50px;
+  position: relative;
+  padding-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* Headings */
 .footer-heading {
+  font-size: 1.3rem;
   font-weight: 700;
-  margin-bottom: 20px;
-  color: #007bff; /* Primary color eka */
+  margin-bottom: 25px;
+  position: relative;
+  color: #00d2ff; /* Theme color */
 }
 
+/* Footer Text */
 .footer-text {
-  font-size: 0.9rem;
-  color: #cccccc;
+  color: #b0b0b0;
+  line-height: 1.8;
+  font-size: 0.95rem;
 }
 
+/* Quick Links Styling */
 .footer-links li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .footer-links a {
-  color: #cccccc;
+  color: #b0b0b0;
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.3s all ease;
+  font-size: 0.95rem;
+  display: inline-block;
 }
 
 .footer-links a:hover {
-  color: #007bff;
-  padding-left: 5px;
+  color: #00d2ff;
+  transform: translateX(8px); /* Mouse eka thibbama poddak dakunata yanawa */
 }
 
-.social-links a {
-  font-size: 1.2rem;
-  color: #ffffff;
-  margin-right: 15px;
-  transition: 0.3s;
+/* Footer Social Icons */
+.custom-footer .social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
 }
 
-.social-links a:hover {
-  color: #007bff;
+.custom-footer .social-links a {
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  transition: 0.4s;
 }
 
+.custom-footer .social-links a:hover {
+  background: #00d2ff;
+  color: #000;
+  border-color: #00d2ff;
+  transform: translateY(-5px) rotate(360deg); /* Full rotate ekak ekka uda yanawa */
+}
+
+/* Subscription Input Area */
 .footer-input {
-  background: #2b2b2b;
-  border: 1px solid #444;
-  color: white;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border-radius: 25px 0 0 25px !important;
+  padding: 12px 20px;
 }
 
 .footer-input:focus {
-  background: #333;
-  color: white;
-  border-color: #007bff;
-  box-shadow: none;
+  border-color: #00d2ff !important;
+  box-shadow: none !important;
 }
 
+.custom-footer .btn-search {
+  border-radius: 0 25px 25px 0 !important;
+  padding: 0 25px;
+  background: #00d2ff;
+  font-weight: 600;
+  border: none;
+}
+
+/* Footer Bottom Bar */
 .footer-bottom {
-  background-color: #111111;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 50px;
   font-size: 0.85rem;
   color: #777;
 }
 
-/* Navbar eke tiyena btn-search class ekama use kala */
-.btn-search {
-  background-color: #007bff;
-  color: white;
-  border: none;
+.footer-bottom p {
+  letter-spacing: 1px;
 }
