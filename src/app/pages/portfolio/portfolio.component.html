@@ -1,48 +1,5 @@
 <app-navbar></app-navbar>
-<br><br><br><br><br>
-<section id="portfolio" class="portfolio section">
-  <div class="container" data-aos="fade-up">
 
-    <div class="section-title">
-      <h2>Portfolio</h2>
-      <p class="section-subtitle">Great challenges yield to the flowing lines of technology, where the force of necessity finds freedom through an intelligent journey. Bound by syntax, it shines beautifully.</p>
-    </div>
-
-    <div class="row">
-      
-      <div class="col-lg-3" data-aos="fade-right">
-        <div class="portfolio-filters-card">
-          <ul class="portfolio-filters">
-            <li [class.filter-active]="activeFilter === 'all'" (click)="setFilter('all')">All Projects</li>
-            <li [class.filter-active]="activeFilter === 'photography'" (click)="setFilter('photography')">Photography</li>
-            <li [class.filter-active]="activeFilter === 'design'" (click)="setFilter('design')">Design</li>
-            <li [class.filter-active]="activeFilter === 'automotive'" (click)="setFilter('automotive')">Automotive</li>
-            <li [class.filter-active]="activeFilter === 'nature'" (click)="setFilter('nature')">Nature</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-lg-9" data-aos="fade-left">
-        <div class="row portfolio-container">
-          
-          <div *ngFor="let project of filteredProjects" class="col-lg-6 col-md-6 portfolio-item mb-4">
-            <div class="portfolio-wrap">
-              <img [src]="project.image" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>{{ project.category | titlecase }}</h4>
-                <div class="portfolio-links">
-                  <a href="#" title="More Details"><i class="bi bi-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
+<app-portfoliocompone></app-portfoliocompone>
 
 <app-footer></app-footer>
