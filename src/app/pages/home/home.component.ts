@@ -2,10 +2,11 @@ import { Component, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@ang
 import { NavbarComponent } from "../../component/navbar/navbar.component";
 import Typed from 'typed.js';
 import { FooterComponent } from "../../component/footer/footer.component";
+import { HomecomponeComponent } from "../../component/homecompone/homecompone.component";
 
 @Component({
   selector: 'app-home',
-  imports: [NavbarComponent, FooterComponent],
+  imports: [NavbarComponent, FooterComponent, HomecomponeComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
