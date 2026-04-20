@@ -15,12 +15,12 @@ export class PortfoliocomponeComponent {
 
   // Sample data array ekak (Images path oyaage project ekata anuwa wenas karanna)
   projects = [
-    { image: 'assets/img/nature-1.jpg', category: 'nature' },
-    { image: 'assets/img/design-1.jpg', category: 'design' },
-    { image: 'assets/img/photography-1.jpg', category: 'photography' },
-    { image: 'assets/img/automotive-1.jpg', category: 'automotive' },
-    { image: 'assets/img/nature-2.jpg', category: 'nature' },
-    { image: 'assets/img/design-2.jpg', category: 'design' },
+    { image: 'Artical01.png', category: 'nature' },
+    { image: 'Artical02.png', category: 'design' },
+    { image: 'Artical03.png', category: 'photography' },
+    { image: 'my-photo.png', category: 'automotive' },
+    { image: 'Artical02.png', category: 'nature' },
+    { image: 'Artical01.png', category: 'design' },
   ];
 
   // Filtered projects mathaka thiyaganna variable eka
