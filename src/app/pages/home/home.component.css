@@ -1,0 +1,372 @@
+.hero {
+  padding-top: 26px;
+}
+.hero-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 1.4px;
+}
+.tiny-star {
+  color: var(--red);
+  font-size: 16px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.hero-stage {
+  position: relative;
+  height: clamp(540px, 44vw, 730px);
+  margin-top: 12px;
+  isolation: isolate;
+  overflow: clip;
+}
+.portfolio-word {
+  position: absolute;
+  top: 0;
+  left: -0.4%;
+  width: 101%;
+  font: 400 clamp(130px, 20.2vw, 335px)/1.15 var(--display);
+  letter-spacing: -0.045em;
+  color: #ed1239;
+  transform: scaleX(1.23);
+  transform-origin: left top;
+  user-select: none;
+  z-index: -1;
+  white-space: nowrap;
+}
+.portrait-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 29%;
+  height: 96%;
+  width: 53%;
+  z-index: 1;
+  pointer-events: none;
+}
+.portrait-aura {
+  position: absolute;
+  inset: 28% -5% 0;
+  background: radial-gradient(ellipse, #22204170, transparent 65%);
+}
+.hero-portrait {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  mask-image: linear-gradient(#000 87%, transparent);
+  filter: drop-shadow(15px 0 35px #e2183520);
+  animation: portrait-enter 1.2s ease both;
+}
+.hero-portrait.original-photo {
+  object-fit: cover;
+  object-position: 50% 35%;
+  mask-image: radial-gradient(ellipse, #000 35%, transparent 70%);
+  mix-blend-mode: lighten;
+}
+.hero-copy {
+  position: absolute;
+  left: 0;
+  top: 22%;
+  z-index: 3;
+}
+.hero-copy > .handwritten {
+  font-size: 35px;
+  margin-bottom: 25px;
+  line-height: 1;
+}
+.hero-copy > h1 {
+  font-family: var(--display);
+  font-size: clamp(58px, 5.8vw, 94px);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+.hero-role {
+  font-family: var(--display);
+  font-size: 19px;
+  color: var(--red);
+  line-height: 1.2;
+  margin-top: 10px;
+  letter-spacing: 0.3px;
+}
+.hero-description {
+  font-size: 11px;
+  line-height: 1.9;
+  color: #c6c0cd;
+  margin-top: 21px;
+}
+.hero-copy > .red-button {
+  margin-top: 24px;
+  min-width: 180px;
+}
+.cv-link {
+  display: flex;
+  width: max-content;
+  font-size: 8px;
+  margin-top: 17px;
+  gap: 16px;
+}
+.cv-link > i {
+  font-size: 11px;
+}
+.hero-side {
+  position: absolute;
+  right: 0;
+  bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+  z-index: 3;
+}
+.vertical-note {
+  writing-mode: vertical-rl;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+.hero-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  color: var(--red);
+  font-size: 17px;
+}
+.hero-socials > a {
+  transition: transform 0.2s;
+}
+.hero-socials > a:hover {
+  transform: translateY(-3px);
+  color: #fff;
+}
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+  font-size: 8px;
+  letter-spacing: 1.2px;
+  color: #aaa4b1;
+}
+.hero-bottom > span:first-child {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.hero-bottom > span:nth-child(2) {
+  display: flex;
+  gap: 15px;
+}
+.hero-bottom > a > i {
+  color: var(--red);
+  margin-left: 15px;
+}
+.hero-bottom > a:hover {
+  color: var(--text);
+}
+@keyframes portrait-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 1800px) {
+  .portfolio-word {
+    font-size: 335px;
+  }
+}
+@media (max-width: 1100px) {
+  .hero-stage {
+    height: 570px;
+  }
+  .portfolio-word {
+    font-size: 20.5vw;
+  }
+  .portrait-wrap {
+    left: 32%;
+    width: 62%;
+    height: 90%;
+  }
+  .hero-copy {
+    top: 21%;
+  }
+  .hero-copy > h1 {
+    font-size: 64px;
+  }
+  .hero-side {
+    bottom: 55px;
+    gap: 25px;
+  }
+  .hero-copy > .handwritten {
+    font-size: 30px;
+  }
+  .hero-role {
+    font-size: 17px;
+  }
+  .hero-copy > .red-button {
+    min-height: 43px;
+    min-width: 160px;
+    font-size: 10px;
+  }
+  .hero-bottom {
+    font-size: 7px;
+    letter-spacing: 0.7px;
+  }
+  .hero-bottom > span:nth-child(2) {
+    gap: 10px;
+  }
+}
+@media (max-width: 760px) {
+  .hero {
+    padding-top: 20px;
+  }
+  .hero-topline {
+    font-size: 6px;
+    letter-spacing: 0.8px;
+  }
+  .hero-topline > span:last-child {
+    font-size: 5px;
+  }
+  .tiny-star {
+    font-size: 12px;
+    margin-left: 4px;
+  }
+  .hero-stage {
+    height: 640px;
+    margin-top: 15px;
+  }
+  .portfolio-word {
+    font-size: 20.6vw;
+    line-height: 1.2;
+    top: 0;
+  }
+  .hero-copy {
+    top: 105px;
+    width: 100%;
+  }
+  .hero-copy > .handwritten {
+    font-size: 26px;
+    margin-bottom: 14px;
+  }
+  .hero-copy > h1 {
+    font-size: 61px;
+    letter-spacing: -1px;
+  }
+  .hero-role {
+    font-size: 18px;
+    max-width: 170px;
+    margin-top: 8px;
+  }
+  .hero-description {
+    font-size: 10px;
+    line-height: 1.9;
+    max-width: 200px;
+    margin-top: 18px;
+    text-shadow: 0 1px 8px #0c0c12;
+  }
+  .hero-description br {
+    display: none;
+  }
+  .hero-copy > .red-button {
+    margin-top: 23px;
+    min-width: 160px;
+    font-size: 10px;
+    gap: 30px;
+    padding: 11px 15px;
+  }
+  .cv-link {
+    margin-top: 18px;
+    font-size: 7px;
+  }
+  .portrait-wrap {
+    left: 28%;
+    bottom: 0;
+    width: 81%;
+    height: 66%;
+    z-index: 1;
+  }
+  .hero-portrait {
+    object-position: bottom right;
+    mask-image: linear-gradient(#000 85%, transparent);
+    opacity: 0.95;
+  }
+  .hero-copy {
+    z-index: 2;
+  }
+  .hero-side {
+    right: 0;
+    bottom: 20px;
+  }
+  .vertical-note {
+    display: none;
+  }
+  .hero-socials {
+    flex-direction: row;
+    gap: 18px;
+    font-size: 15px;
+  }
+  .hero-bottom {
+    font-size: 6px;
+    letter-spacing: 0.7px;
+    gap: 15px;
+    padding-block: 16px;
+  }
+  .hero-bottom > span:nth-child(2) {
+    display: none;
+  }
+  .hero-bottom > a > i {
+    margin-left: 8px;
+  }
+  .hero-copy > .red-button,
+  .cv-link {
+    position: relative;
+    z-index: 4;
+  }
+}
+@media (max-width: 390px) {
+  .hero-stage {
+    height: 590px;
+  }
+  .hero-copy {
+    top: 95px;
+  }
+  .hero-copy > h1 {
+    font-size: 53px;
+  }
+  .hero-copy > .handwritten {
+    font-size: 24px;
+  }
+  .hero-role {
+    font-size: 16px;
+  }
+  .hero-description {
+    font-size: 9px;
+    max-width: 160px;
+  }
+  .portrait-wrap {
+    height: 64%;
+    left: 27%;
+    width: 83%;
+  }
+  .hero-copy > .red-button {
+    min-width: 145px;
+    font-size: 9px;
+    padding-inline: 13px;
+  }
+  .hero-bottom {
+    font-size: 5.5px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-portrait {
+    animation: none;
+  }
+}
