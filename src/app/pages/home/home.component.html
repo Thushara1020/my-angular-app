@@ -1,5 +1,576 @@
-<app-navbar></app-navbar>
+<a class="skip-link" href="#main">Skip to content</a>
+<app-live-build></app-live-build>
+<header class="site-header">
+  <a href="#home" class="wordmark" aria-label="Thushara home"
+    >THUSHARA<span>.</span></a
+  >
+  <nav class="desktop-nav" aria-label="Main navigation">
+    <a href="#work" [class.current]="activeSection === 'work'">Work</a>
+    <a href="#about" [class.current]="activeSection === 'about'">About</a>
+    <a href="#services" [class.current]="activeSection === 'services'"
+      >Expertise</a
+    >
+    <a href="#contact" [class.current]="activeSection === 'contact'">Contact</a>
+  </nav>
+  <a class="header-contact" href="mailto:thusharabawantha2001@gmail.com"
+    ><span class="status-dot"></span> Let's talk
+    <i class="bi bi-arrow-up-right"></i
+  ></a>
+  <button
+    class="menu-toggle"
+    type="button"
+    (click)="menuOpen = !menuOpen"
+    [attr.aria-expanded]="menuOpen"
+    aria-controls="mobile-nav"
+    [attr.aria-label]="menuOpen ? 'Close menu' : 'Open menu'"
+  >
+    <i [class]="menuOpen ? 'bi bi-x-lg' : 'bi bi-list'"></i>
+  </button>
+</header>
+@if (menuOpen) {
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+    <a href="#home" (click)="navigate()">Home</a
+    ><a href="#work" (click)="navigate()">Work</a
+    ><a href="#about" (click)="navigate()">About</a
+    ><a href="#services" (click)="navigate()">Expertise</a
+    ><a href="#resume" (click)="navigate()">Journey</a
+    ><a href="#contact" (click)="navigate()">Contact</a>
+  </nav>
+}
+<main id="main">
+  <section id="home" class="hero page-width">
+    <div class="hero-topline">
+      <span>INDEPENDENT DEVELOPER & CREATIVE THINKER</span
+      ><span>BASED IN SRI LANKA <span class="tiny-star">✳︎</span></span>
+    </div>
+    <div class="hero-stage">
+      <div class="portfolio-word" aria-hidden="true">PORTFOLIO</div>
+      <div class="portrait-wrap">
+        <div class="portrait-aura"></div>
+        <img
+          class="hero-portrait"
+          src="portrait-neon.png"
+          alt="Thushara Bhawantha, web developer"
+          fetchpriority="high"
+          onerror="
+            this.src = 'my-photo.png';
+            this.classList.add('original-photo');
+            this.onerror = null;
+          "
+        />
+      </div>
+      <div class="hero-copy">
+        <p class="handwritten">Hello, I'm</p>
+        <h1>THUSHARA<span class="red">.</span></h1>
+        <p class="hero-role">DEVELOPER &<br />CREATIVE THINKER</p>
+        <p class="hero-description">
+          Thoughtful interfaces. Powerful code.<br />I turn ideas into digital
+          experiences<br />that look good and work even better.
+        </p>
+        <a class="red-button" href="#work"
+          >Explore my work <i class="bi bi-arrow-down-right"></i
+        ></a>
+        <a class="text-link cv-link" href="University%20CV.pdf.pdf" download
+          >DOWNLOAD CV <i class="bi bi-arrow-down"></i
+        ></a>
+      </div>
+      <div class="hero-side">
+        <span class="vertical-note">DESIGN WITH INTENT. BUILD WITH CARE.</span>
+        <div class="hero-socials">
+          <a
+            href="https://github.com/Thushara1020"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            ><i class="bi bi-github"></i></a
+          ><a
+            href="https://www.linkedin.com/in/thushara-bhawantha-42091b2a9/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            ><i class="bi bi-linkedin"></i></a
+          ><a
+            href="https://www.instagram.com/thushara_bhawantha/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            ><i class="bi bi-instagram"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <span><span class="status-dot"></span> OPEN TO OPPORTUNITIES</span
+      ><span
+        >ANGULAR <span class="red">/</span> SPRING BOOT
+        <span class="red">/</span> UI & UX</span
+      ><a href="#work">SCROLL TO EXPLORE <i class="bi bi-arrow-down"></i></a>
+    </div>
+  </section>
 
-<app-homecompone></app-homecompone>
+  <section id="work" class="work-section page-width section-space">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">01 / SELECTED WORK & EXPLORATIONS</p>
+        <h2>WORK THAT SPEAKS<span class="red">.</span></h2>
+      </div>
+      <a
+        class="text-link"
+        href="https://github.com/Thushara1020"
+        target="_blank"
+        rel="noopener noreferrer"
+        >EXPLORE GITHUB <i class="bi bi-arrow-up-right"></i
+      ></a>
+    </div>
+    <div class="filter-row">
+      <div class="filters" aria-label="Filter work">
+        @for (filter of filters; track filter) {
+          <button
+            type="button"
+            [class.active]="activeFilter === filter"
+            [attr.aria-pressed]="activeFilter === filter"
+            (click)="setFilter(filter)"
+          >
+            {{ filter }}
+          </button>
+        }
+      </div>
+      <span class="small-label"
+        >{{ filteredWorks.length.toString().padStart(2, "0") }} / SELECTED
+        PIECES</span
+      >
+    </div>
+    <div class="project-grid">
+      @for (work of filteredWorks; track work.id) {
+        <button
+          class="project-card"
+          [id]="'work-' + work.id"
+          type="button"
+          (click)="lastWorkId = work.id; openWork(work); focusDialog()"
+          [attr.aria-label]="'View ' + work.title"
+        >
+          <div class="project-art" [class.portfolio-art]="!work.image">
+            @if (work.image) {
+              <img [src]="work.image" [alt]="work.title" loading="lazy" />
+            } @else {
+              <div class="mini-site">
+                <div class="mini-top">
+                  THUSHARA<span>DESIGN. DEVELOP. DELIVER.</span>
+                </div>
+                <span class="mini-bg">CREATE.</span
+                ><img
+                  src="portrait-neon.png"
+                  alt=""
+                  loading="lazy"
+                  onerror="
+                    this.src = 'my-photo.png';
+                    this.onerror = null;
+                  "
+                /><strong>BUILD<br /><em>BETTER.</em></strong>
+                <div class="mini-bottom">
+                  Thoughtfully designed. Carefully built. <span>↗</span>
+                </div>
+              </div>
+            }
+            <span class="project-type">{{ work.category }}</span
+            ><span class="project-open"
+              ><i class="bi bi-arrow-up-right"></i
+            ></span>
+          </div>
+          <div class="project-caption">
+            <span class="project-number">{{ work.id }}</span>
+            <div>
+              <h3>{{ work.title }}</h3>
+              <p>
+                {{ work.category }} /
+                {{
+                  work.id === "01"
+                    ? "Angular · TypeScript"
+                    : "Visual storytelling"
+                }}
+              </p>
+            </div>
+            <i class="bi bi-arrow-up-right"></i>
+          </div>
+        </button>
+      }
+    </div>
+    <div class="toolkit reveal">
+      <div class="toolkit-label">
+        <p class="eyebrow">THE RIGHT TOOLS.</p>
+        <span>THE RIGHT RESULTS.</span>
+      </div>
+      <div class="tool-logos" aria-label="Technology toolkit">
+        <span><i class="bi bi-code-square"></i> Angular</span
+        ><span><i class="bi bi-cup-hot"></i> Java</span
+        ><span><i class="bi bi-leaf"></i> Spring</span
+        ><span class="ts-mark">TS</span
+        ><span><i class="bi bi-filetype-html"></i> HTML</span
+        ><span><i class="bi bi-git"></i> Git</span
+        ><span><i class="bi bi-bootstrap"></i></span>
+      </div>
+    </div>
+  </section>
 
-<app-footer></app-footer>
+  <section id="about" class="about-section page-width section-space">
+    <div class="about-copy reveal">
+      <p class="eyebrow">02 / FROM THE FIRST IDEA</p>
+      <h2 class="big-heading">
+        FROM<br />WIREFRAME.<br /><span class="red">TO LIVE.</span>
+      </h2>
+      <p>
+        From a spark of an idea to a smooth, responsive experience. I care about
+        every step of the journey.
+      </p>
+      <a class="text-link" href="#contact"
+        >LET'S MAKE SOMETHING GOOD <i class="bi bi-arrow-up-right"></i
+      ></a>
+    </div>
+    <div class="about-visual reveal">
+      <div class="browser-bar">
+        <span><b></b><b></b><b></b></span
+        ><span>thushara / creative development</span
+        ><i class="bi bi-arrow-up-right"></i>
+      </div>
+      <div class="about-preview">
+        <span class="preview-orbit"></span>
+        <div class="preview-left">
+          <span class="small-label">IDEAS INTO EXPERIENCES</span
+          ><strong>BUILD<br /><span class="red">SMARTER.</span></strong
+          ><span class="preview-pill">DESIGNED TO MAKE A DIFFERENCE ↗</span>
+        </div>
+        <img
+          src="portrait-neon.png"
+          alt=""
+          loading="lazy"
+          onerror="
+            this.src = 'my-photo.png';
+            this.onerror = null;
+          "
+        />
+        <div class="preview-right">
+          Good design.<br />Great code.<br /><span class="red"
+            >One vision.</span
+          >
+        </div>
+      </div>
+      <div class="preview-note">
+        <strong>A little design thinking.<br />A lot of possibilities.</strong>
+        <p>
+          I'm Thushara Bhawantha, a developer based in Pannipitiya, Colombo. I
+          build with Angular and Spring Boot, bringing thoughtful design and
+          reliable development together.
+        </p>
+      </div>
+      <span class="image-caption"
+        >THE INTERSECTION OF CREATIVITY & TECHNOLOGY</span
+      >
+    </div>
+  </section>
+
+  <section id="services" class="expertise-section page-width section-space">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">03 / BEHIND THE CRAFT</p>
+        <h2>
+          MORE THAN CODE.<br />CRAFTING <span class="red">EXPERIENCES.</span>
+        </h2>
+      </div>
+      <p class="heading-description">
+        I'm always learning, experimenting, and finding better ways to build. My
+        focus is simple: useful experiences with a strong visual point of view.
+      </p>
+    </div>
+    <div class="expertise-grid">
+      <div class="skills-column reveal">
+        <h3 class="column-title">EXPERTISE & SKILLS</h3>
+        <div class="skill-row">
+          <span class="small-label red">01 / DEVELOPMENT</span>
+          <h4>Full-stack development</h4>
+          <p>
+            Angular interfaces. Spring Boot APIs.<br />Connected from front to
+            back.
+          </p>
+          <i class="bi bi-arrow-up-right"></i>
+        </div>
+        <div class="skill-row">
+          <span class="small-label red">02 / EXPERIENCE</span>
+          <h4>Thoughtful interface design</h4>
+          <p>
+            Responsive layouts, clear interactions,<br />and the details that
+            make it feel right.
+          </p>
+          <i class="bi bi-arrow-up-right"></i>
+        </div>
+        <div class="skills-tags">
+          <span>Angular</span><span>TypeScript</span><span>Java</span
+          ><span>Spring Boot</span><span>HTML / CSS</span><span>REST APIs</span
+          ><span>Git & GitHub</span><span>Responsive design</span>
+        </div>
+      </div>
+      <div class="process-column reveal">
+        <h3 class="column-title">MY DEVELOPMENT PLAYBOOK</h3>
+        <div class="process-step">
+          <span>01</span>
+          <div>
+            <h4>Understand.</h4>
+            <p>
+              Ask the right questions. Find the real problem before writing the
+              first line.
+            </p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span>02</span>
+          <div>
+            <h4>Design.</h4>
+            <p>
+              Explore ideas, shape the structure, and make every interaction
+              intentional.
+            </p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span>03</span>
+          <div>
+            <h4>Build.</h4>
+            <p>
+              Bring it together with clean code, reusable components, and care.
+            </p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span>04</span>
+          <div>
+            <h4>Refine.</h4>
+            <p>
+              Test the details. Keep improving. Make it ready for the real
+              world.
+            </p>
+          </div>
+        </div>
+      </div>
+      <aside class="manifesto reveal">
+        <span class="manifesto-star">✳</span>
+        <p>
+          Good code<br />should feel<br />like a great<br /><em>experience.</em>
+        </p>
+        <span class="small-label">THAT'S THE STANDARD.</span>
+        <div class="manifesto-line"></div>
+        <span class="handwritten">Thushara.</span>
+      </aside>
+    </div>
+  </section>
+
+  <section id="resume" class="journey-section page-width section-space">
+    <div class="section-heading reveal">
+      <div>
+        <p class="eyebrow">04 / THE JOURNEY SO FAR</p>
+        <h2>KEEP BUILDING. KEEP <span class="red">SHIPPING.</span></h2>
+      </div>
+      <a class="text-link" href="University%20CV.pdf.pdf" download
+        >MY RESUME <i class="bi bi-download"></i
+      ></a>
+    </div>
+    <div class="journey-grid">
+      <div class="timeline reveal">
+        <article>
+          <span class="small-label red">THE FOCUS</span>
+          <div>
+            <h3>Full-stack development</h3>
+            <span class="small-label">ANGULAR / SPRING BOOT</span>
+            <p>
+              Building responsive interfaces and connected applications.
+              Exploring the space between strong engineering and thoughtful
+              design.
+            </p>
+          </div>
+          <i class="bi bi-code-slash"></i>
+        </article>
+        <article>
+          <span class="small-label">EDUCATION</span>
+          <div>
+            <h3>Bachelor of Information Technology</h3>
+            <span class="small-label">BIT / INFORMATION TECHNOLOGY</span>
+            <p>
+              A foundation in software engineering, problem solving, and the
+              technology behind useful digital products.
+            </p>
+          </div>
+          <i class="bi bi-mortarboard"></i>
+        </article>
+        <article>
+          <span class="small-label">ALWAYS</span>
+          <div>
+            <h3>Learning. Making. Growing.</h3>
+            <span class="small-label">ONE IDEA AT A TIME</span>
+            <p>
+              Experimenting with new tools, sharing technology content, and
+              turning curiosity into things you can use.
+            </p>
+          </div>
+          <i class="bi bi-lightning-charge"></i>
+        </article>
+      </div>
+      <aside class="journey-aside reveal">
+        <span class="eyebrow">THE MINDSET</span>
+        <h3>THOUGHTFUL.<br />USEFUL.<br /><span class="red">HUMAN.</span></h3>
+        <a
+          href="https://github.com/Thushara1020"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><i class="bi bi-github"></i
+          ><span>Explore the code<small>GITHUB / THUSHARA1020</small></span
+          ><i class="bi bi-arrow-up-right"></i></a
+        ><a href="University%20CV.pdf.pdf" download
+          ><i class="bi bi-file-earmark-arrow-down"></i
+          ><span>The full story<small>DOWNLOAD MY RESUME</small></span
+          ><i class="bi bi-arrow-down-right"></i
+        ></a>
+      </aside>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section page-width section-space">
+    <div class="contact-intro reveal">
+      <p class="eyebrow">05 / YOUR NEXT CHAPTER</p>
+      <h2 class="big-heading">
+        LET'S BUILD<br />TOGETHER<span class="red">.</span>
+      </h2>
+      <p>
+        Have a project in mind?<br />I'd love to hear what you're working on.
+      </p>
+      <a class="contact-cta" href="mailto:thusharabawantha2001@gmail.com"
+        ><span><i class="bi bi-arrow-up-right"></i></span> START A
+        CONVERSATION</a
+      >
+    </div>
+    <div class="contact-links reveal">
+      <a href="mailto:thusharabawantha2001@gmail.com"
+        ><i class="bi bi-envelope"></i
+        ><span
+          ><small>DROP A LINE</small>thusharabawantha2001&#64;gmail.com</span
+        ><i class="bi bi-arrow-up-right"></i></a
+      ><a href="tel:+94774027391"
+        ><i class="bi bi-telephone"></i
+        ><span><small>GIVE ME A CALL</small>+94 77 402 7391</span
+        ><i class="bi bi-arrow-up-right"></i></a
+      ><a
+        href="https://wa.me/94774027391"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><i class="bi bi-whatsapp"></i
+        ><span><small>LET'S CHAT</small>WhatsApp</span
+        ><i class="bi bi-arrow-up-right"></i></a
+      ><a
+        href="https://www.linkedin.com/in/thushara-bhawantha-42091b2a9/"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><i class="bi bi-linkedin"></i
+        ><span><small>CONNECT</small>LinkedIn</span
+        ><i class="bi bi-arrow-up-right"></i></a
+      ><a
+        href="https://github.com/Thushara1020"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><i class="bi bi-github"></i
+        ><span><small>EXPLORE</small>GitHub / Thushara1020</span
+        ><i class="bi bi-arrow-up-right"></i
+      ></a>
+      <div class="location-row">
+        <i class="bi bi-geo-alt"></i
+        ><span><small>BASED IN</small>Pannipitiya, Colombo, Sri Lanka</span
+        ><span class="status-dot"></span>
+      </div>
+    </div>
+    <div class="contact-card reveal">
+      <div class="contact-card-top">
+        THUSHARA<span>LET'S MAKE IT HAPPEN ↗</span>
+      </div>
+      <span class="contact-bg-word">CREATE</span
+      ><img
+        src="portrait-neon.png"
+        alt=""
+        loading="lazy"
+        onerror="
+          this.src = 'my-photo.png';
+          this.onerror = null;
+        "
+      /><strong
+        >YOUR IDEA.<br /><span>OUR NEXT<br />BIG THING.</span></strong
+      ><a
+        href="mailto:thusharabawantha2001@gmail.com"
+        aria-label="Email Thushara"
+        ><i class="bi bi-arrow-up-right"></i
+      ></a>
+    </div>
+  </section>
+  <div class="closing-line page-width">
+    <span>Good things start with a conversation.</span
+    ><a href="#home">BACK TO TOP <i class="bi bi-arrow-up"></i></a>
+  </div>
+</main>
+<footer class="site-footer page-width">
+  <a class="wordmark" href="#home">THUSHARA<span>.</span></a
+  ><span>© 2026 THUSHARA BHAWANTHA · MADE WITH INTENT.</span>
+  <div>
+    <a
+      href="https://github.com/Thushara1020"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="GitHub"
+      ><i class="bi bi-github"></i></a
+    ><a
+      href="https://www.linkedin.com/in/thushara-bhawantha-42091b2a9/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="LinkedIn"
+      ><i class="bi bi-linkedin"></i></a
+    ><a
+      href="https://www.instagram.com/thushara_bhawantha/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+      ><i class="bi bi-instagram"></i
+    ></a>
+  </div>
+</footer>
+@if (selectedWork) {
+  <div class="dialog-backdrop" (click)="closeWork()">
+    <section
+      class="work-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="dialog-title"
+      (click)="$event.stopPropagation()"
+    >
+      <button
+        id="close-work"
+        class="dialog-close"
+        type="button"
+        aria-label="Close project details"
+        (click)="closeWork()"
+      >
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <p class="eyebrow">{{ selectedWork.id }} / {{ selectedWork.category }}</p>
+      <h2 id="dialog-title">{{ selectedWork.title }}</h2>
+      @if (selectedWork.image) {
+        <img [src]="selectedWork.image" [alt]="selectedWork.title" />
+      }
+      <p>{{ selectedWork.description }}</p>
+      @if (selectedWork.id === "01") {
+        <a
+          class="red-button"
+          href="https://github.com/Thushara1020"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Explore GitHub <i class="bi bi-arrow-up-right"></i
+        ></a>
+      }
+      <button class="text-link" type="button" (click)="closeWork()">
+        BACK TO WORK <i class="bi bi-arrow-left"></i>
+      </button>
+    </section>
+  </div>
+}
