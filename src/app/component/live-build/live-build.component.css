@@ -1,0 +1,199 @@
+:host {
+  display: contents;
+}
+.build-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 82;
+  pointer-events: none;
+  overflow: hidden;
+}
+/* These nodes are created outside Angular so cursor motion never triggers page change detection. */
+:host ::ng-deep .build-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--worker-color);
+  opacity: 0;
+  will-change: transform;
+  filter: drop-shadow(0 2px 3px #0006);
+}
+:host ::ng-deep .build-cursor span {
+  position: absolute;
+  left: 15px;
+  top: 20px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--worker-color);
+  color: #11141c;
+  font: 600 9px/1.7 var(--body);
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+:host ::ng-deep .build-selection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid var(--worker-color);
+  background: color-mix(in srgb, var(--worker-color) 8%, transparent);
+  opacity: 0;
+  will-change: transform;
+}
+:host ::ng-deep .build-selection > b {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--worker-color);
+  border: 1px solid #0c0c12;
+}
+:host ::ng-deep .build-selection > b:nth-child(1) {
+  left: -3px;
+  top: -3px;
+}
+:host ::ng-deep .build-selection > b:nth-child(2) {
+  right: -3px;
+  top: -3px;
+}
+:host ::ng-deep .build-selection > b:nth-child(3) {
+  left: -3px;
+  bottom: -3px;
+}
+:host ::ng-deep .build-selection > b:nth-child(4) {
+  right: -3px;
+  bottom: -3px;
+}
+:host ::ng-deep .build-selection[data-mode="assemble"] {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 23px, #70b4ff12 24px 25px),
+    repeating-linear-gradient(90deg, transparent 0 23px, #70b4ff12 24px 25px);
+}
+:host ::ng-deep .build-selection[data-mode="assemble"]::after {
+  content: "";
+  position: absolute;
+  inset: 15% 8%;
+  border: 1px dashed color-mix(in srgb, var(--worker-color) 35%, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent 64%,
+    #70b4ff18 64% 65%,
+    transparent 65%
+  );
+}
+:host ::ng-deep .build-caret {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  opacity: 0;
+  box-shadow: 0 0 7px #70b4ff44;
+}
+.build-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 95;
+  min-height: 39px;
+  padding: 5px 8px 5px 12px;
+  background: #20212be8;
+  backdrop-filter: blur(16px);
+  border: 1px solid #ffffff24;
+  border-radius: 9px;
+  box-shadow: 0 4px 24px #0005;
+}
+.build-avatars {
+  display: flex;
+  padding-right: 3px;
+}
+.build-avatars b {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #24252e;
+  margin-left: -4px;
+  background: #70b4ff;
+  color: #0c1420;
+  font-size: 7px;
+  line-height: 1;
+}
+.build-avatars b:nth-child(2) {
+  background: #78ecc0;
+}
+.build-avatars b:nth-child(3) {
+  background: #c6a2ff;
+}
+.build-caption {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  color: #dedbe5;
+  white-space: nowrap;
+  padding-right: 10px;
+  border-right: 1px solid #ffffff20;
+}
+.build-status {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #78ecc0;
+  box-shadow: 0 0 7px #78ecc060;
+}
+.build-status.is-paused {
+  background: #99939f;
+  box-shadow: none;
+}
+.build-controls button {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #cbc8d4;
+}
+.build-controls button:hover {
+  background: #ffffff12;
+  color: #fff;
+}
+.build-controls button:focus-visible {
+  outline: 2px solid #70b4ff;
+  outline-offset: 2px;
+}
+@media (max-width: 600px) {
+  .build-controls {
+    bottom: 12px;
+    gap: 8px;
+    min-height: 36px;
+  }
+  .build-caption {
+    font-size: 8px;
+  }
+  .build-avatars b {
+    width: 17px;
+    height: 17px;
+    font-size: 6px;
+  }
+  :host ::ng-deep .build-cursor span {
+    font-size: 8px;
+    padding: 1px 5px;
+  }
+  :host ::ng-deep .build-cursor svg {
+    width: 16px;
+    height: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .build-overlay,
+  .build-controls {
+    display: none;
+  }
+}
