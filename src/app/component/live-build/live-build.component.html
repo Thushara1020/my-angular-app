@@ -1,0 +1,35 @@
+<div #overlay class="build-overlay" aria-hidden="true"></div>
+@if (!reducedMotion) {
+  <div
+    class="build-controls"
+    role="group"
+    aria-label="Build animation controls"
+  >
+    <span class="build-avatars" aria-hidden="true"
+      ><b>D</b><b>&lt;/&gt;</b><b>W</b></span
+    >
+    <span class="build-caption"
+      ><span [class.is-paused]="paused" class="build-status"></span>Design in
+      motion</span
+    >
+    <button
+      type="button"
+      (click)="toggle()"
+      [attr.aria-label]="
+        paused ? 'Play build animation' : 'Pause build animation'
+      "
+      [attr.title]="paused ? 'Play animation' : 'Pause animation'"
+      [attr.aria-pressed]="paused"
+    >
+      <i [class]="paused ? 'bi bi-play-fill' : 'bi bi-pause-fill'"></i>
+    </button>
+    <button
+      type="button"
+      (click)="replay()"
+      aria-label="Replay build animation"
+      title="Replay animation"
+    >
+      <i class="bi bi-arrow-clockwise"></i>
+    </button>
+  </div>
+}
